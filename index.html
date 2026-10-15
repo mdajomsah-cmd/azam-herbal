@@ -112,6 +112,13 @@ function directWhatsApp(name,price){let msg=`আসসালামু আলা�
 function submitBottomOrder(){let name=document.getElementById('oName').value.trim();let phone=document.getElementById('oPhone').value.trim();let address=document.getElementById('oAddress').value.trim();let prodVal=document.getElementById('oProduct').value;let qty=document.getElementById('oQty').value||1;if(!name||!phone||!address){toast('নাম, ফোন, ঠিকানা লিখুন');return;}if(!prodVal){toast('পণ্য নির্বাচন করুন');return;}let parts=prodVal.split('|');let pName=parts[0];let pPrice=parts[1];let total=pPrice*qty;let msg=`আসসালামু আলাইকুম%0A%0A🛒 *নতুন অর্ডার*%0Aনাম:%20${encodeURIComponent(name)}%0Aফোন:%20${encodeURIComponent(phone)}%0Aঠিকানা:%20${encodeURIComponent(address)}%0A%0Aপণ্য:%20${encodeURIComponent(pName)}%0Aপরিমাণ:%20${qty}%0Aমোট:%20৳%20${total}`;window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');}
 function orderFromCart(){if(cart.length===0){toast('কার্ট খালি');return;}let name=prompt('নাম:');if(!name)return;let phone=prompt('ফোন:');if(!phone)return;let address=prompt('ঠিকানা:');if(!address)return;let total=cart.reduce((a,b)=>a+b.price*b.qty,0);let msg=`অর্ডার%0Aনাম:${encodeURIComponent(name)}%0Aফোন:${encodeURIComponent(phone)}%0Aঠিকানা:${encodeURIComponent(address)}%0A`;cart.forEach(c=>{msg+=`${encodeURIComponent(c.name)}%20x%20${c.qty}%0A`;});msg+=`মোট:৳${total}`;window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');}
 renderProducts();updateCart();
-</script>
+<div style="background:#ffffff; margin:15px; padding:20px; border-radius:16px; box-shadow:0 2px 10px rgba(0,0,0,0.08); text-align:center; border:2px solid #e8f5e9;">
+  <h3 style="color:#0f3d2e; margin-bottom:5px;">🌿 আমাদের সাথে যুক্ত থাকুন</h3>
+  <p style="color:#666; font-size:13px; margin-bottom:15px;">নতুন পণ্য ও অফার পেতে ফলো করুন</p>
+  <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+    <a href="https://www.facebook.com/share/1Y7AGQaD54/" target="_blank" style="background:#1877F2; color:white; padding:12px 22px; border-radius:25px; text-decoration:none; font-weight:700;">📘 Facebook Page 1</a>
+    <a href="https://www.facebook.com/share/18XPzPbG4v/" target="_blank" style="background:#0f3d2e; color:white; padding:12px 22px; border-radius:25px; text-decoration:none; font-weight:700;">🛍️ Facebook Page 2</a>
+  </div>
+</div>
 </body>
 </html>
