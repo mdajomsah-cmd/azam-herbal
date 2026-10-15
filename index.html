@@ -4,121 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>মাওলানা আজম শাহ অনলাইন শপ</title>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif}
-body{background:#f8faf5;color:#1a3c2a;padding-bottom:80px}
-.header{background:#0f3d2e;color:white;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-.logo{display:flex;gap:10px;align-items:center}
-.logo-icon{width:48px;height:48px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px}
-.logo h1{font-size:17px;line-height:1.2;font-weight:700}
-.logo p{font-size:11px;color:#d4e8c2}
-.cart-btn{background:#d4a017;color:white;border:none;width:58px;height:58px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;cursor:pointer}
-.search-bar{background:#0f3d2e;padding:0 16px 14px;display:flex}
-.search-bar input{flex:1;padding:12px 16px;border-radius:12px 0 0 12px;border:none;outline:none;font-size:15px}
-.search-bar button{background:#d4a017;border:none;padding:0 18px;border-radius:0 12px 12px 0;font-size:18px;cursor:pointer}
-.categories{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px}
-.cat-card{background:white;border:1.5px solid #e2e8d5;padding:14px;border-radius:16px;text-align:center;cursor:pointer}
-.cat-card.active{background:#e8f3d9;border-color:#0f3d2e}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:6px 16px}
-.product-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06);border:1px solid #eef2e6;display:flex;flex-direction:column}
-.product-img{background:#eaf5e1;height:140px;display:flex;align-items:center;justify-content:center;font-size:60px}
-.product-info{padding:10px;flex:1;display:flex;flex-direction:column}
-.product-info h3{font-size:15px;font-weight:600;min-height:38px}
-.product-info.price{color:#b78a00;font-weight:700;font-size:17px;margin:6px 0}
-.btn-row{display:flex;gap:6px;margin-top:auto}
-.btn-cart{flex:1;background:#0f3d2e;color:white;border:none;padding:8px 4px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer}
-.btn-wa{flex:1;background:#25D366;color:white;border:none;padding:8px 4px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer}
-.order-section{background:white;margin:16px;border-radius:20px;padding:20px;box-shadow:0 4px 16px rgba(0,0,0,.06);border:1px solid #e5e7eb}
-.order-section h2{text-align:center;color:#0f3d2e;font-size:20px}
-.order-section.subtitle{text-align:center;color:#888;font-size:13px;margin-bottom:16px}
-.order-section input,.order-section textarea,.order-section select{width:100%;padding:12px 14px;border:1.5px solid #d6dbc9;border-radius:12px;outline:none;font-size:14px;margin-bottom:10px}
-.order-btn-big{width:100%;background:#25D366;color:white;border:none;padding:14px;border-radius:14px;font-weight:700;font-size:16px;cursor:pointer}
-#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#0f3d2e;color:white;padding:10px 18px;border-radius:24px;font-size:13px;display:none;z-index:100}
-.cart-drawer{position:fixed;top:0;right:-100%;width:88%;max-width:380px;height:100%;background:white;z-index:50;transition:.3s;display:flex;flex-direction:column}
-.cart-drawer.open{right:0}
-.cart-header{padding:16px;background:#0f3d2e;color:white;display:flex;justify-content:space-between}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:40}
-.overlay.show{display:block}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e5e7eb;display:flex;justify-content:space-around;padding:8px 0 10px;z-index:20}
-.nav-item{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#6b7280;font-size:11px}
-.nav-item.active{color:#0f3d2e}
+body{background:#f0f4e8;color:#1a1a1a;padding-bottom:80px}
+.header{background:#0f3d2e;color:white;padding:16px}
+.searchBox{background:white;border-radius:14px;display:flex;overflow:hidden;margin-top:12px}
+.searchBox input{flex:1;padding:14px;border:none;outline:none;font-size:16px}
+.searchBox button{background:#d4a017;border:none;padding:0 20px;font-size:20px}
+.catGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+.catCard{background:white;border-radius:16px;padding:20px;text-align:center;font-weight:700}
+.container{max-width:800px;margin:auto}
+.card{background:white;border-radius:18px;padding:14px;margin:12px;box-shadow:0 3px 10px rgba(0,0,0,0.07)}
+.card img{width:100%;height:240px;object-fit:cover;border-radius:14px}
+.price{font-size:22px;font-weight:700;color:#0f3d2e;margin-top:6px}
+.btn{width:100%;padding:14px;background:#0f3d2e;color:white;border:none;border-radius:14px;font-size:18px;font-weight:700;margin-top:10px;cursor:pointer}
+.fbBox{background:linear-gradient(135deg,#e8f5e9,#fff);border:2px solid #0f3d2e;border-radius:18px;padding:18px;margin:12px;text-align:center}
+.fbBtn{display:block;padding:12px;margin:8px 0;border-radius:10px;color:white;text-decoration:none;font-weight:700}
+.bottomNav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #ddd;z-index:999}
 </style>
 </head>
 <body>
 <div class="header">
-  <div class="logo"><div class="logo-icon">🌿</div><div><h1>মাওলানা আজম শাহ<br>অনলাইন শপ</h1><p>বিশ্বস্ত পণ্য • সহজ অর্ডার • হোম ডেলিভারি</p></div></div>
-  <button class="cart-btn" onclick="toggleCart()">🛒<span id="cartCount">0</span></button>
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div style="display:flex;gap:10px;align-items:center">
+<div style="width:50px;height:50px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px">🌿</div>
+<div><h3>মাওলানা আজম শাহ<br>অনলাইন শপ</h3><small>বিশ্বস্ত পণ্য • সহজ অর্ডার • হোম ডেলিভারি</small></div>
 </div>
-<div class="search-bar"><input id="searchInput" type="text" placeholder="পণ্য খুঁজুন..." oninput="renderProducts()"><button>🔍</button></div>
-<div class="categories">
-  <div class="cat-card active" onclick="filterCat('সব',this)">🛍️<p>সব</p></div>
-  <div class="cat-card" onclick="filterCat('আয়ুর্বেদিক',this)">🌿<p>আয়ুর্বেদিক</p></div>
-  <div class="cat-card" onclick="filterCat('কসমেটিকস',this)">💄<p>কসমেটিকস</p></div>
-  <div class="cat-card" onclick="filterCat('পোশাক',this)">👗<p>পোশাক</p></div>
+<div style="background:#d4a017;padding:10px 16px;border-radius:14px;text-align:center;font-weight:700">🛒<br><span>0</span></div>
 </div>
-<div style="display:flex;justify-content:space-between;padding:10px 16px 6px"><h2 style="font-size:18px">জনপ্রিয় পণ্য</h2></div>
-<div class="products" id="productsGrid"></div>
-
-<!-- আপনার চাওয়া আলাদা অর্ডার সেকশন -->
-<div class="order-section" id="orderSection">
-  <h2>📝 অর্ডার করুন</h2>
-  <p class="subtitle">নিচের ফর্ম পূরণ করে সরাসরি WhatsApp এ অর্ডার করুন</p>
-  <input id="oName" type="text" placeholder="আপনার নাম *">
-  <input id="oPhone" type="tel" placeholder="মোবাইল নম্বর *">
-  <textarea id="oAddress" rows="3" placeholder="সম্পূর্ণ ঠিকানা *"></textarea>
-  <select id="oProduct"><option value="">পণ্য নির্বাচন করুন</option></select>
-  <input id="oQty" type="number" value="1" min="1">
-  <button class="order-btn-big" onclick="submitBottomOrder()">WhatsApp এ অর্ডার পাঠান ✓</button>
-  <p style="text-align:center;font-size:11px;color:#888;margin-top:10px">01603104191 নম্বরে যাবে</p>
+<div class="searchBox"><input placeholder="পণ্য খুঁজুন..."><button>🔍</button></div>
 </div>
 
-<div class="overlay" id="overlay" onclick="toggleCart()"></div>
-<div class="cart-drawer" id="cartDrawer">
-  <div class="cart-header"><h3>আপনার কার্ট</h3><button onclick="toggleCart()" style="background:none;border:none;color:white;font-size:22px">✕</button></div>
-  <div id="cartItems" style="flex:1;overflow:auto;padding:12px">কার্ট খালি</div>
-  <div style="padding:14px;border-top:1px solid #eee">
-    <div style="display:flex;justify-content:space-between;font-weight:700"><span>মোট:</span><span id="totalPrice">৳ ০</span></div>
-    <button class="order-btn-big" style="margin-top:10px;background:#0f3d2e" onclick="orderFromCart()">WhatsApp এ অর্ডার</button>
-  </div>
+<div class="container">
+<div class="catGrid">
+<div class="catCard">🛍️<br>সব</div>
+<div class="catCard">🌿<br>আয়ুর্বেদিক</div>
+<div class="catCard">💄<br>কসমেটিকস</div>
+<div class="catCard">👗<br>পোশাক</div>
 </div>
-<div class="bottom-nav">
-  <a href="#" class="nav-item active"><span>🏠</span>হোম</a>
-  <a href="#orderSection" class="nav-item"><span>📝</span>অর্ডার</a>
-  <a href="#" class="nav-item"><span>⊞</span>ক্যাটাগরি</a>
-  <a href="#" onclick="toggleCart();return false" class="nav-item"><span>🛒</span>কার্ট</a>
-  <a href="admin.html" class="nav-item"><span>👤</span>Admin</a>
+
+<h2 style="padding:12px">জনপ্রিয় পণ্য</h2>
+<div id="productGrid"></div>
+
+<div class="fbBox">
+<h3>🌿 আমাদের Facebook পেজে যুক্ত থাকুন</h3>
+<a class="fbBtn" style="background:#1877F2" href="https://www.facebook.com/share/1Y7AGQaD54/" target="_blank">📘 Facebook Page 1</a>
+<a class="fbBtn" style="background:#0f3d2e" href="https://www.facebook.com/share/18XPzPbG4v/" target="_blank">📘 Facebook Page 2</a>
 </div>
-<div id="toast"></div>
+
+<div class="card">
+<h2 style="color:#0f3d2e;text-align:center">📝 অর্ডার করুন</h2>
+<input id="cName" placeholder="আপনার নাম *" style="width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;margin-top:10px">
+<input id="cPhone" placeholder="মোবাইল নম্বর *" style="width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;margin-top:10px">
+<input id="cProd" placeholder="পণ্য" readonly style="width:100%;padding:14px;border-radius:12px;margin-top:10px;background:#f0f4e8;font-weight:bold">
+<button class="btn" onclick="placeOrder()">✅ WhatsApp এ অর্ডার করুন</button>
+</div>
+</div>
+
+<div class="bottomNav">
+<div>🏠<br>হোম</div><div>📝<br>অর্ডার</div><div>⊞<br>ক্যাটাগরি</div><div>🛒<br>কার্ট</div><div onclick="location.href='admin.html'">👤<br>Admin</div>
+</div>
+
 <script>
-let defaultProducts=[{id:1,name:'খাঁটি মধু',price:1200,cat:'আয়ুর্বেদিক',img:'🍯'},{id:2,name:'হারবাল টনিক',price:850,cat:'আয়ুর্বেদিক',img:'🌿'},{id:3,name:'কালোজিরা তেল ১০০মিলি',price:450,cat:'আয়ুর্বেদিক',img:'🌿'},{id:4,name:'নিম তেল ১০০মিলি',price:380,cat:'কসমেটিকস',img:'🧴'},{id:5,name:'মধুময় বাদাম',price:950,cat:'আয়ুর্বেদিক',img:'🥜'},{id:6,name:'হিজাব',price:650,cat:'পোশাক',img:'🧕'}];
-let currentCat='সব',cart=[];
-function getStoredProducts(){let s=localStorage.getItem('azam_products');try{return s?JSON.parse(s):defaultProducts}catch(e){return defaultProducts}}
-function filterCat(c,el){currentCat=c;document.querySelectorAll('.cat-card').forEach(x=>x.classList.remove('active'));if(el)el.classList.add('active');renderProducts();}
-function renderProducts(){
-  let q=document.getElementById('searchInput').value.toLowerCase();
-  let all=getStoredProducts();
-  let filtered=all.filter(p=>(currentCat==='সব'||p.cat===currentCat)&&p.name.toLowerCase().includes(q));
-  document.getElementById('productsGrid').innerHTML=filtered.map(p=>`<div class="product-card"><div class="product-img">${p.imgData?`<img src="${p.imgData}" style="width:100%;height:100%;object-fit:cover">`:p.img}</div><div class="product-info"><h3>${p.name}</h3><div class="price">৳ ${p.price}</div><div class="btn-row"><button class="btn-cart" onclick="addToCart(${p.id})">🛒 কার্ট</button><button class="btn-wa" onclick="directWhatsApp('${p.name}',${p.price})">WhatsApp</button></div></div></div>`).join('');
-  document.getElementById('oProduct').innerHTML='<option value="">পণ্য নির্বাচন করুন</option>'+all.map(p=>`<option value="${p.name}|${p.price}">${p.name} - ৳ ${p.price}</option>`).join('');
+let defaultProducts=[{id:1,name:'খাঁটি মধু',price:1500,cat:'আয়ুর্বেদিক',img:'🍯',isImage:false}];
+function getProducts(){
+  let s=localStorage.getItem('azam_products');
+  try{ if(s){ let p=JSON.parse(s); if(p.length>0) return p; } return defaultProducts; }catch(e){return defaultProducts;}
 }
-function addToCart(id){let prod=getStoredProducts().find(p=>p.id===id);let f=cart.find(c=>c.id===id);if(f)f.qty++;else cart.push({...prod,qty:1});updateCart();toast('কার্টে যোগ হয়েছে');}
-function updateCart(){document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);let div=document.getElementById('cartItems');if(cart.length===0)div.innerHTML='<p style="text-align:center;color:#888;padding:20px">কার্ট খালি</p>';else div.innerHTML=cart.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #eee"><div>${c.img}</div><div style="flex:1"><b>${c.name}</b><br>৳ ${c.price} x ${c.qty}</div><button onclick="removeCart(${c.id})" style="border:none;background:#fee;color:#c00;padding:4px 8px;border-radius:6px">✕</button></div>`).join('');document.getElementById('totalPrice').innerText='৳ '+cart.reduce((a,b)=>a+b.price*b.qty,0);}
-function removeCart(id){cart=cart.filter(c=>c.id!==id);updateCart();}
-function toggleCart(){document.getElementById('cartDrawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('show');}
-function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
-const WA_NUMBER='8801603104191';
-function directWhatsApp(name,price){let msg=`আসসালামু আলাইকুম%0A%0A🛒 অর্ডার:%20${encodeURIComponent(name)}%0Aদাম:%20৳%20${price}`;window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');}
-function submitBottomOrder(){let name=document.getElementById('oName').value.trim();let phone=document.getElementById('oPhone').value.trim();let address=document.getElementById('oAddress').value.trim();let prodVal=document.getElementById('oProduct').value;let qty=document.getElementById('oQty').value||1;if(!name||!phone||!address){toast('নাম, ফোন, ঠিকানা লিখুন');return;}if(!prodVal){toast('পণ্য নির্বাচন করুন');return;}let parts=prodVal.split('|');let pName=parts[0];let pPrice=parts[1];let total=pPrice*qty;let msg=`আসসালামু আলাইকুম%0A%0A🛒 *নতুন অর্ডার*%0Aনাম:%20${encodeURIComponent(name)}%0Aফোন:%20${encodeURIComponent(phone)}%0Aঠিকানা:%20${encodeURIComponent(address)}%0A%0Aপণ্য:%20${encodeURIComponent(pName)}%0Aপরিমাণ:%20${qty}%0Aমোট:%20৳%20${total}`;window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');}
-function orderFromCart(){if(cart.length===0){toast('কার্ট খালি');return;}let name=prompt('নাম:');if(!name)return;let phone=prompt('ফোন:');if(!phone)return;let address=prompt('ঠিকানা:');if(!address)return;let total=cart.reduce((a,b)=>a+b.price*b.qty,0);let msg=`অর্ডার%0Aনাম:${encodeURIComponent(name)}%0Aফোন:${encodeURIComponent(phone)}%0Aঠিকানা:${encodeURIComponent(address)}%0A`;cart.forEach(c=>{msg+=`${encodeURIComponent(c.name)}%20x%20${c.qty}%0A`;});msg+=`মোট:৳${total}`;window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');}
-renderProducts();updateCart();
-<div style="background:#ffffff; margin:15px; padding:20px; border-radius:16px; box-shadow:0 2px 10px rgba(0,0,0,0.08); text-align:center; border:2px solid #e8f5e9;">
-  <h3 style="color:#0f3d2e; margin-bottom:5px;">🌿 আমাদের সাথে যুক্ত থাকুন</h3>
-  <p style="color:#666; font-size:13px; margin-bottom:15px;">নতুন পণ্য ও অফার পেতে ফলো করুন</p>
-  <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-    <a href="https://www.facebook.com/share/1Y7AGQaD54/" target="_blank" style="background:#1877F2; color:white; padding:12px 22px; border-radius:25px; text-decoration:none; font-weight:700;">📘 Facebook Page 1</a>
-    <a href="https://www.facebook.com/share/18XPzPbG4v/" target="_blank" style="background:#0f3d2e; color:white; padding:12px 22px; border-radius:25px; text-decoration:none; font-weight:700;">🛍️ Facebook Page 2</a>
-  </div>
-</div>
+function render(){
+  let grid=document.getElementById('productGrid');
+  let products=getProducts();
+  grid.innerHTML=products.map(p=>{
+    let imgHtml='';
+    if(p.isImage && p.img && p.img.startsWith('data:')){ imgHtml=`<img src="${p.img}">`; }
+    else{ imgHtml=`<div style="height:240px;background:#f0f4e8;display:flex;align-items:center;justify-content:center;font-size:80px;border-radius:14px">${p.img||'🌿'}</div>`; }
+    return `<div class="card">${imgHtml}<h3 style="margin:10px 0 4px">${p.name}</h3><p style="color:#666;font-size:14px">${p.cat}</p><div class="price">৳${p.price}</div><button class="btn" onclick="selectProduct('${p.name.replace(/'/g,'')}')">🛒 অর্ডার করুন</button></div>`;
+  }).join('');
+}
+function selectProduct(name){ document.getElementById('cProd').value=name; window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'}); }
+function placeOrder(){ let name=document.getElementById('cName').value.trim(); let phone=document.getElementById('cPhone').value.trim(); let prod=document.getElementById('cProd').value.trim(); if(!name||!phone){alert('নাম ও মোবাইল দিন');return;} let msg=`আসসালামু আলাইকুম, আমি ${name}, ${prod} অর্ডার করতে চাই। মোবাইল: ${phone}`; window.open(`https://wa.me/8801XXXXXXXXX?text=${encodeURIComponent(msg)}`,'_blank'); }
+render();
+</script>
 </body>
 </html>
