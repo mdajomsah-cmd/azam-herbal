@@ -7,36 +7,45 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif}
-body{background:#f0f4e8;color:#1a1a1a;padding-bottom:80px}
-.header{background:#0f3d2e;color:white;padding:16px}
-.searchBox{background:white;border-radius:14px;display:flex;overflow:hidden;margin-top:12px}
-.searchBox input{flex:1;padding:14px;border:none;outline:none;font-size:16px}
-.searchBox button{background:#d4a017;border:none;padding:0 20px;font-size:20px}
-.catGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
-.catCard{background:white;border-radius:16px;padding:20px;text-align:center;font-weight:700}
-.container{max-width:800px;margin:auto}
-.card{background:white;border-radius:18px;padding:14px;margin:12px;box-shadow:0 3px 10px rgba(0,0,0,0.07)}
-.card img{width:100%;height:240px;object-fit:cover;border-radius:14px}
-.price{font-size:22px;font-weight:700;color:#0f3d2e;margin-top:6px}
-.btn{width:100%;padding:14px;background:#0f3d2e;color:white;border:none;border-radius:14px;font-size:18px;font-weight:700;margin-top:10px;cursor:pointer}
-.fbBox{background:linear-gradient(135deg,#e8f5e9,#fff);border:2px solid #0f3d2e;border-radius:18px;padding:18px;margin:12px;text-align:center}
+body{background:#f8fdf4;color:#1a1a1a;padding-bottom:90px}
+.header{background:#0f3d2e;color:white;padding:12px 14px;position:sticky;top:0;z-index:100}
+.header-top{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;gap:10px;align-items:center}
+.logo-icon{width:52px;height:52px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px}
+.cart-badge{background:#d4a017;padding:8px 16px;border-radius:14px;text-align:center;font-weight:700;min-width:55px}
+.catGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
+.catCard{background:white;border:1px solid #e8e8e8;border-radius:16px;padding:16px;text-align:center;font-weight:700}
+.product-section{padding:0 10px}
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.pCard{background:white;border-radius:18px;overflow:hidden;border:1px solid #e9e9e9;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.pImg{height:160px;background:#e8f5e3;display:flex;align-items:center;justify-content:center}
+.pImg img{width:100%;height:100%;object-fit:cover}
+.pBody{padding:10px}
+.pName{font-size:15px;font-weight:700;color:#0f3d2e}
+.pPrice{color:#b7790a;font-weight:700;margin:6px 0;font-size:17px}
+.pBtns{display:flex;gap:6px;margin-top:6px}
+.btnCart{flex:1.2;background:#0f3d2e;color:white;border:none;border-radius:10px;padding:8px 4px;font-size:12px;font-weight:700}
+.btnWA{flex:1;background:#fef3c7;color:#6b4a00;border:none;border-radius:10px;padding:8px 4px;font-size:12px;font-weight:700}
+.orderCard{background:white;border-radius:18px;padding:16px;margin:16px 10px;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.inp{width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;margin-top:10px;font-size:15px}
+.orderBtn{width:100%;padding:14px;background:#0f3d2e;color:white;border:none;border-radius:14px;font-size:17px;font-weight:700;margin-top:12px}
+.bottomNav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #e5e5e5;z-index:999}
+.bottomNav div{text-align:center;font-size:12px;color:#555}
+.fbBox{background:linear-gradient(135deg,#e8f5e9,#fff);border:2px solid #0f3d2e;border-radius:18px;padding:16px;margin:16px 10px;text-align:center}
 .fbBtn{display:block;padding:12px;margin:8px 0;border-radius:10px;color:white;text-decoration:none;font-weight:700}
-.bottomNav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #ddd;z-index:999}
 </style>
 </head>
 <body>
 <div class="header">
-<div style="display:flex;justify-content:space-between;align-items:center">
-<div style="display:flex;gap:10px;align-items:center">
-<div style="width:50px;height:50px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px">🌿</div>
-<div><h3>মাওলানা আজম শাহ<br>অনলাইন শপ</h3><small>বিশ্বস্ত পণ্য • সহজ অর্ডার • হোম ডেলিভারি</small></div>
+<div class="header-top">
+<div class="logo">
+<div class="logo-icon">🌿</div>
+<div><h3 style="font-size:16px">মাওলানা আজম শাহ<br>অনলাইন শপ</h3><small style="color:#d4e9c0;font-size:11px">বিশ্বস্ত পণ্য • সহজ অর্ডার • হোম ডেলিভারি</small></div>
 </div>
-<div style="background:#d4a017;padding:10px 16px;border-radius:14px;text-align:center;font-weight:700">🛒<br><span>0</span></div>
+<div class="cart-badge">🛒<br><span id="cartCount">0</span></div>
 </div>
-<div class="searchBox"><input placeholder="পণ্য খুঁজুন..."><button>🔍</button></div>
 </div>
 
-<div class="container">
 <div class="catGrid">
 <div class="catCard">🛍️<br>সব</div>
 <div class="catCard">🌿<br>আয়ুর্বেদিক</div>
@@ -44,8 +53,12 @@ body{background:#f0f4e8;color:#1a1a1a;padding-bottom:80px}
 <div class="catCard">👗<br>পোশাক</div>
 </div>
 
-<h2 style="padding:12px">জনপ্রিয় পণ্য</h2>
-<div id="productGrid"></div>
+<div class="product-section">
+<div style="display:flex;justify-content:space-between;padding:8px 2px">
+<h2 style="color:#0f3d2e">জনপ্রিয় পণ্য</h2><span style="color:#0f3d2e;font-size:14px">সব</span>
+</div>
+<div id="productGrid" class="product-grid"></div>
+</div>
 
 <div class="fbBox">
 <h3>🌿 আমাদের Facebook পেজে যুক্ত থাকুন</h3>
@@ -53,37 +66,51 @@ body{background:#f0f4e8;color:#1a1a1a;padding-bottom:80px}
 <a class="fbBtn" style="background:#0f3d2e" href="https://www.facebook.com/share/18XPzPbG4v/" target="_blank">📘 Facebook Page 2</a>
 </div>
 
-<div class="card">
+<div class="orderCard" id="orderSec">
 <h2 style="color:#0f3d2e;text-align:center">📝 অর্ডার করুন</h2>
-<input id="cName" placeholder="আপনার নাম *" style="width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;margin-top:10px">
-<input id="cPhone" placeholder="মোবাইল নম্বর *" style="width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;margin-top:10px">
-<input id="cProd" placeholder="পণ্য" readonly style="width:100%;padding:14px;border-radius:12px;margin-top:10px;background:#f0f4e8;font-weight:bold">
-<button class="btn" onclick="placeOrder()">✅ WhatsApp এ অর্ডার করুন</button>
-</div>
+<p style="text-align:center;color:#666;font-size:13px">ফর্ম পূরণ করুন, সরাসরি WhatsApp এ যাবে</p>
+<input id="cName" class="inp" placeholder="আপনার নাম *">
+<input id="cPhone" class="inp" placeholder="মোবাইল নম্বর *">
+<input id="cAddress" class="inp" placeholder="পূর্ণ ঠিকানা (গ্রাম, থানা, জেলা) *">
+<input id="cProd" class="inp" placeholder="পণ্যের নাম" readonly style="background:#f0f4e8;font-weight:700">
+<button class="orderBtn" onclick="placeOrder()">✅ WhatsApp এ অর্ডার করুন</button>
 </div>
 
 <div class="bottomNav">
-<div>🏠<br>হোম</div><div>📝<br>অর্ডার</div><div>⊞<br>ক্যাটাগরি</div><div>🛒<br>কার্ট</div><div onclick="location.href='admin.html'">👤<br>Admin</div>
+<div>🏠<br>হোম</div><div>⊞<br>ক্যাটাগরি</div><div>🔍<br>পণ্য</div><div>🛒<br>কার্ট</div><div onclick="location.href='admin.html'">👤<br>Admin</div>
 </div>
 
 <script>
-let defaultProducts=[{id:1,name:'খাঁটি মধু',price:1500,cat:'আয়ুর্বেদিক',img:'🍯',isImage:false}];
-function getProducts(){
-  let s=localStorage.getItem('azam_products');
-  try{ if(s){ let p=JSON.parse(s); if(p.length>0) return p; } return defaultProducts; }catch(e){return defaultProducts;}
-}
+const WA_NUMBER="8801603104191";
+let defaultProducts=[{id:1,name:"খাঁটি মধু",price:1200,cat:"আয়ুর্বেদিক",img:"🍯",isImage:false},{id:2,name:"হারবাল টনিক",price:850,cat:"আয়ুর্বেদিক",img:"🌿",isImage:false}];
+function getProducts(){try{let s=localStorage.getItem('azam_products');if(s){let p=JSON.parse(s);if(p.length>0) return p;}}catch(e){}return defaultProducts;}
+function getCart(){try{return JSON.parse(localStorage.getItem('azam_cart')||'[]')}catch(e){return []}}
+function saveCart(c){localStorage.setItem('azam_cart',JSON.stringify(c));updateCartCount();}
+function updateCartCount(){document.getElementById('cartCount').innerText=getCart().length;}
 function render(){
   let grid=document.getElementById('productGrid');
   let products=getProducts();
   grid.innerHTML=products.map(p=>{
     let imgHtml='';
-    if(p.isImage && p.img && p.img.startsWith('data:')){ imgHtml=`<img src="${p.img}">`; }
-    else{ imgHtml=`<div style="height:240px;background:#f0f4e8;display:flex;align-items:center;justify-content:center;font-size:80px;border-radius:14px">${p.img||'🌿'}</div>`; }
-    return `<div class="card">${imgHtml}<h3 style="margin:10px 0 4px">${p.name}</h3><p style="color:#666;font-size:14px">${p.cat}</p><div class="price">৳${p.price}</div><button class="btn" onclick="selectProduct('${p.name.replace(/'/g,'')}')">🛒 অর্ডার করুন</button></div>`;
-  }).join('');
+    if(p.isImage && p.img && p.img.startsWith('data:')){imgHtml=`<img src="${p.img}">`;}
+    else{let emoji=p.img||'🌿';if(emoji.length>4) emoji='🌿';imgHtml=`<div style="font-size:70px">${emoji}</div>`;}
+    let priceText=new Intl.NumberFormat('bn-BD').format(p.price);
+    return `<div class="pCard"><div class="pImg">${imgHtml}</div><div class="pBody"><div class="pName">${p.name}</div><div class="pPrice">৳ ${priceText}</div><div class="pBtns"><button class="btnCart" onclick="addToCart('${p.name.replace(/'/g,"")}')">🛒 কার্টে যোগ</button><button class="btnWA" onclick="buyWhatsApp('${p.name.replace(/'/g,"")}')">WhatsApp</button></div></div></div>`;
+  }).join('');updateCartCount();
 }
-function selectProduct(name){ document.getElementById('cProd').value=name; window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'}); }
-function placeOrder(){ let name=document.getElementById('cName').value.trim(); let phone=document.getElementById('cPhone').value.trim(); let prod=document.getElementById('cProd').value.trim(); if(!name||!phone){alert('নাম ও মোবাইল দিন');return;} let msg=`আসসালামু আলাইকুম, আমি ${name}, ${prod} অর্ডার করতে চাই। মোবাইল: ${phone}`; window.open(`https://wa.me/8801XXXXXXXXX?text=${encodeURIComponent(msg)}`,'_blank'); }
+function addToCart(name){let cart=getCart();cart.push({name,date:Date.now()});saveCart(cart);document.getElementById('cProd').value=name;alert('✅ '+name+' কার্টে যোগ হয়েছে!');document.getElementById('orderSec').scrollIntoView({behavior:'smooth'});}
+function buyWhatsApp(name){document.getElementById('cProd').value=name;document.getElementById('orderSec').scrollIntoView({behavior:'smooth'});}
+function placeOrder(){
+  let name=document.getElementById('cName').value.trim();
+  let phone=document.getElementById('cPhone').value.trim();
+  let address=document.getElementById('cAddress').value.trim();
+  let prod=document.getElementById('cProd').value.trim();
+  if(!name||!phone||!address){alert('নাম, মোবাইল ও ঠিকানা সব দিন');return;}
+  if(!prod){alert('একটি পণ্য নির্বাচন করুন');return;}
+  let msg=`আসসালামু আলাইকুম,%0Aআমি ${name}%0A%0A🛍️ পণ্য: ${prod}%0A📞 মোবাইল: ${phone}%0A🏠 ঠিকানা: ${address}%0A%0Aঅর্ডারটি কনফার্ম করুন।`;
+  let url=`https://wa.me/${WA_NUMBER}?text=${msg}`;
+  window.open(url,'_blank');
+}
 render();
 </script>
 </body>
