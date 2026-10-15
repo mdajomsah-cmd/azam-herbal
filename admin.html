@@ -2,58 +2,114 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel</title>
+<title>Admin Panel - আজম হারবাল</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif}
-body{background:#f0f4e8} .header{background:#0f3d2e;color:white;padding:16px;display:flex;gap:12px;align-items:center}
-.card{background:white;margin:12px;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-input,select{width:100%;padding:12px;border:1.5px solid #d6dbc9;border-radius:12px;margin-top:8px;outline:none}
-.btn{padding:12px 16px;border:none;border-radius:12px;font-weight:700;cursor:pointer}
-.btn-green{background:#0f3d2e;color:white} .btn-red{background:#fee;color:#c00}
+body{background:#f0f4e8}
+.header{background:#0f3d2e;color:white;padding:12px;display:flex;gap:12px;align-items:center;justify-content:center}
+.card{background:white;margin:12px;padding:16px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+input,select{width:100%;padding:12px;border:1px solid #d6b9c9;border-radius:12px;margin-top:8px;outline:none;font-size:16px}
+.btn{padding:12px 16px;border:none;border-radius:12px;font-weight:700;cursor:pointer;width:100%}
+.btn-green{background:#0f3d2e;color:white}
+.btn-red{background:#ffeeee;color:#cc0000}
 .hidden{display:none}
+#previewImg{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-top:10px;display:none;border:2px dashed #0f3d2e}
+.fb-link{display:block;background:#1877F2;color:white;padding:12px;text-align:center;border-radius:12px;text-decoration:none;margin:8px 0;font-weight:bold}
 </style>
 </head>
 <body>
-<div class="header"><a href="index.html" style="color:white;text-decoration:none;font-size:22px">←</a><div><h3>Admin Panel</h3><small>মাওলানা আজম শাহ • গোপন</small></div></div>
+<div class="header"><a href="index.html" style="color:white;text-decoration:none;font-size:22px">←</a><div><h3>Admin Panel</h3></div></div>
 
 <div id="loginBox" class="card" style="margin-top:30px;text-align:center">
-  <h2>🔐 Admin Login</h2>
-  <p style="color:#888;font-size:12px;margin-top:6px">শুধুমাত্র অ্যাডমিনের জন্য</p>
-  <div style="display:flex;gap:8px;margin-top:16px">
-    <input id="pinInput" type="password" placeholder="গোপন PIN দিন" style="margin:0">
-    <button class="btn btn-green" onclick="login()">প্রবেশ</button>
-  </div>
+<h2>🔐 Admin Login</h2>
+<p style="color:#888;font-size:12px;margin-top:6px">গোপন পাসওয়ার্ড দিন</p>
+<div style="display:flex;gap:8px;margin-top:16px">
+<input id="pinInput" type="password" placeholder="পিন দিন" style="margin:0">
+<button class="btn btn-green" onclick="login()" style="width:80px">✔</button>
+</div>
+<p style="font-size:12px;margin-top:10px;color:#888">পাসওয়ার্ড: 44557</p>
 </div>
 
 <div id="adminBox" class="hidden">
-  <div class="card"><h3>➕ নতুন পণ্য</h3><input id="pName" placeholder="নাম"><input id="pPrice" type="number" placeholder="দাম"><select id="pCat"><option>আয়ুর্বেদিক</option><option>কসমেটিকস</option><option>পোশাক</option></select><button class="btn btn-green" style="width:100%;margin-top:10px" onclick="addProduct()">যোগ করুন</button></div>
-  <div class="card"><h3>📦 পণ্য তালিকা</h3><div id="productList"></div></div>
-  <div class="card"><h3>🛒 অর্ডার</h3><div id="orderList"></div></div>
-  <div class="card" style="text-align:center"><button class="btn" style="background:#eee" onclick="logout()">লগআউট</button></div>
+<div class="card">
+<h3>➕ নতুন পণ্য যোগ করুন</h3>
+<input id="pName" placeholder="পণ্যের নাম">
+<input id="pPrice" type="number" placeholder="দাম">
+<input id="pCat" placeholder="ক্যাটাগরি" value="মধু">
+<label style="display:block;margin-top:12px;font-weight:bold">📸 ছবি যোগ করুন:</label>
+<input id="pImage" type="file" accept="image/*">
+<img id="previewImg">
+<button class="btn btn-green" style="margin-top:12px" onclick="addProduct()">✅ যোগ করুন</button>
+<button class="btn btn-red" style="margin-top:10px" onclick="clearAllProducts()">🗑️ পুরাতন সব মুছুন</button>
 </div>
-
+<div class="card"><h3>📦 পণ্য তালিকা</h3><div id="productList"></div></div>
+<div class="card"><h3>🛒 অর্ডার তালিকা</h3><div id="orderList"></div></div>
+<div class="card" style="text-align:center">
+<h3>📘 Facebook কানেক্ট</h3>
+<a class="fb-link" href="https://www.facebook.com/share/1Y7AGQaD54/" target="_blank">Facebook Page 1</a>
+<a class="fb-link" style="background:#0f3d2e" href="https://www.facebook.com/share/18XPzPbG4v/" target="_blank">Facebook Page 2</a>
+<button class="btn" style="background:#eee;margin-top:15px" onclick="logout()">🚪 লগআউট</button>
+</div>
+</div>
 <script>
-const SECRET_PIN="44557";
-let defaultProducts=[{id:1,name:'খাঁটি মধু',price:1200,cat:'আয়ুর্বেদিক',img:'🍯'}];
+const SECRET_PIN='44557';
+let currentImageBase64 = '';
+let defaultProducts=[{id:1,name:'খাঁটি মধু',price:1200,cat:'মধু',img:'🍯'}];
 function getProducts(){let s=localStorage.getItem('azam_products');try{return s?JSON.parse(s):defaultProducts}catch(e){return defaultProducts}}
 function saveProducts(p){localStorage.setItem('azam_products',JSON.stringify(p))}
+document.getElementById('pImage').addEventListener('change', function(e){
+  let file = e.target.files[0];if(!file) return;
+  let reader = new FileReader();
+  reader.onload = function(ev){
+    currentImageBase64 = ev.target.result;
+    let pre = document.getElementById('previewImg');
+    pre.src = currentImageBase64;pre.style.display='block';
+  }
+  reader.readAsDataURL(file);
+});
 function login(){
   let pin=document.getElementById('pinInput').value.trim();
   if(pin===SECRET_PIN){
     document.getElementById('loginBox').classList.add('hidden');
     document.getElementById('adminBox').classList.remove('hidden');
     localStorage.setItem('azam_admin','1');renderAll();
-  }else{alert('ভুল PIN!');}
+  }else{alert('ভুল PIN! সঠিক পিন 44557');}
 }
-function checkLogin(){if(localStorage.getItem('azam_admin')==='1'){document.getElementById('loginBox').classList.add('hidden');document.getElementById('adminBox').classList.remove('hidden');renderAll();}}
+function checkLogin(){if(localStorage.getItem('azam_admin')==='1'){document.getElementById('loginBox').classList.add('hidden');document.getElementById('adminBox').classList.remove('hidden')}}
 function logout(){localStorage.removeItem('azam_admin');location.reload();}
-function addProduct(){let n=document.getElementById('pName').value.trim();let pr=parseInt(document.getElementById('pPrice').value);let c=document.getElementById('pCat').value;if(!n||!pr){alert('নাম দাম দিন');return;}let p=getProducts();p.unshift({id:Date.now(),name:n,price:pr,cat:c,img:'🌿'});saveProducts(p);renderAll();alert('যোগ হয়েছে');}
+function addProduct(){
+  let name=document.getElementById('pName').value.trim();
+  let price=parseInt(document.getElementById('pPrice').value);
+  let cat=document.getElementById('pCat').value.trim()||'মধু';
+  if(!name||!price){alert('নাম ও দাম দিন');return;}
+  if(!currentImageBase64){alert('একটি ছবি নির্বাচন করুন ভাই');return;}
+  let p=getProducts();p.push({id:Date.now(),name:name,price:price,cat:cat,img:currentImageBase64,isImage:true});
+  saveProducts(p);
+  document.getElementById('pName').value='';document.getElementById('pPrice').value='';document.getElementById('pImage').value='';currentImageBase64='';document.getElementById('previewImg').style.display='none';
+  renderAll();alert('✅ পণ্য যোগ হয়েছে ছবি সহ!');
+}
+function clearAllProducts(){
+  if(confirm('সব পুরাতন পণ্য মুছে যাবে, নিশ্চিত?')){
+    saveProducts([]);renderAll();alert('🗑️ সব মুছে ফেলা হয়েছে');
+  }
+}
 function deleteProduct(id){let p=getProducts().filter(x=>x.id!==id);saveProducts(p);renderAll();}
-function renderProducts(){let l=document.getElementById('productList');l.innerHTML=getProducts().map(p=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee"><span>${p.name} - ৳${p.price}</span><button class="btn btn-red" onclick="deleteProduct(${p.id})">মুছুন</button></div>`).join('')}
-function renderOrders(){let d=document.getElementById('orderList');let o=JSON.parse(localStorage.getItem('azam_orders')||'[]');d.innerHTML=o.length?o.map(x=>`<div style="border:1px solid #eee;padding:8px;border-radius:8px;margin-bottom:6px"><b>${x.customer?.name||''}</b> ${x.customer?.phone||''}<br>৳${x.total||0}</div>`).join(''):'<p style="color:#888">কোন অর্ডার নেই</p>'}
+function renderProducts(){
+  let l=document.getElementById('productList');let products=getProducts();
+  if(products.length===0){l.innerHTML='<p style=text-align:center;color:#888>কোন পণ্য নেই</p>';return;}
+  l.innerHTML=products.map(p=>{
+    let imgTag = p.isImage? `<img src="${p.img}" style="width:50px;height:50px;object-fit:cover;border-radius:8px">` : `<span style="font-size:30px">${p.img||'📦'}</span>`;
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee"><div style="display:flex;gap:10px;align-items:center">${imgTag}<div><b>${p.name}</b><br><small>৳${p.price}</small></div></div><button class="btn btn-red" style="width:auto;padding:6px 12px" onclick="deleteProduct(${p.id})">মুছুন</button></div>`;
+  }).join('');
+}
+function renderOrders(){
+  let l=document.getElementById('orderList');let o=JSON.parse(localStorage.getItem('azam_orders')||'[]');
+  if(o.length===0){l.innerHTML='<p style=text-align:center;color:#888>কোন অর্ডার নেই</p>';return;}
+  l.innerHTML=o.map(x=>`<div style="padding:8px 0;border-bottom:1px solid #eee"><b>${x.name||x.cName}</b> - ${x.phone||x.cPhone}</div>`).join('');
+}
 function renderAll(){renderProducts();renderOrders();}
-checkLogin();
+checkLogin();renderAll();
 </script>
 </body>
 </html>
