@@ -1,131 +1,59 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel - মাওলানা আজম শাহ</title>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif}
-body{background:#f3f5f0;color:#1a3c2a;padding-bottom:80px}
-.header{background:#0f3d2e;color:white;padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
-.header.logo{width:44px;height:44px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px}
-.header h1{font-size:18px;color:#b8e0a0}
-.header p{font-size:11px;color:#cde8b8}
-.search-bar{padding:10px 16px;display:flex}
-.search-bar input{flex:1;padding:11px 14px;border-radius:12px;border:1.5px solid #d9e2d0;outline:none}
-.card{background:white;margin:12px 16px;border-radius:18px;padding:16px;border:1.5px solid #e2e8d5;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.card h2{font-size:18px;display:flex;align-items:center;gap:8px}
-.pin-box{margin-top:10px;display:flex;gap:8px}
-.pin-box input{flex:1;padding:10px 12px;border-radius:10px;border:1.5px solid #ccc}
-.btn{padding:10px 16px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
-.btn-dark{background:#0f3d2e;color:white}
-.form-grid{display:grid;gap:10px;margin-top:12px}
-.form-grid input,.form-grid select{padding:11px 12px;border-radius:12px;border:1.5px solid #d9e2d0;outline:none;font-size:14px}
-.upload-area{border:1.8px dashed #2d6a4f;border-radius:14px;padding:14px;text-align:center;background:#f6faf2;cursor:pointer}
-.upload-area img{max-width:100%;max-height:140px;border-radius:10px;margin-top:8px}
+body{background:#f0f4e8} .header{background:#0f3d2e;color:white;padding:16px;display:flex;gap:12px;align-items:center}
+.card{background:white;margin:12px;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+input,select{width:100%;padding:12px;border:1.5px solid #d6dbc9;border-radius:12px;margin-top:8px;outline:none}
+.btn{padding:12px 16px;border:none;border-radius:12px;font-weight:700;cursor:pointer}
+.btn-green{background:#0f3d2e;color:white} .btn-red{background:#fee;color:#c00}
 .hidden{display:none}
-.product-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;gap:8px}
-.product-row img{width:42px;height:42px;border-radius:8px;object-fit:cover;background:#eaf5e1}
-.order-card{background:#fdfdf8;border:1px dashed #d9d0a0;padding:10px;border-radius:10px;margin-bottom:8px;font-size:13px}
-#loginSection{display:block}
-#mainSection{display:none}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e5e7eb;display:flex;justify-content:space-around;padding:8px 0 10px}
-.nav-item{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#6b7280;font-size:11px}
-.nav-item.active{color:#b78a00}
 </style>
 </head>
 <body>
-<div class="header"><div class="logo">🌿</div><div><h1>আয়ুর্বেদিক ফার্মেসী</h1><p>মাওলানা আজম শাহ • BACK TO NATURE</p></div></div>
-<div class="search-bar"><input id="globalSearch" placeholder="পণ্য খুঁজুন..." oninput="filterList()"></div>
-<div class="card" id="loginSection">
-  <h2>🔐 Admin Login</h2><p style="font-size:13px;color:#666;margin-top:4px">ডেমো PIN: 1234</p>
-  <div class="pin-box"><input id="pinInput" type="password" placeholder="PIN দিন"><button class="btn btn-dark" onclick="login()">প্রবেশ</button></div>
-</div>
-<div id="mainSection">
-  <div class="card">
-    <h2>👨‍💼 Admin Panel</h2><p style="font-size:13px;color:#666">ডেমো PIN: 1234</p>
-    <div class="form-grid">
-      <input id="pName" placeholder="পণ্যের নাম">
-      <select id="pCat"><option>আয়ুর্বেদিক</option><option>কসমেটিকস</option><option>পোশাক</option><option>সব</option></select>
-      <input id="pPrice" type="number" placeholder="দাম">
-      <input id="pEmoji" placeholder="ইমোজি, যেমন 🌿 (যদি ছবি না থাকে)">
-      <div class="upload-area" onclick="document.getElementById('pImage').click()">
-        <div>📷 গ্যালারি থেকে ছবি যোগ করুন (ক্লিক করুন)</div>
-        <div style="font-size:11px;color:#666;margin-top:4px">PNG, JPG - সর্বোচ্চ 5MB</div>
-        <img id="previewImg" class="hidden">
-        <input type="file" id="pImage" accept="image/*" class="hidden" onchange="previewFile()">
-      </div>
-      <button class="btn btn-dark" onclick="addProduct()" style="padding:14px;font-size:16px">+ পণ্য যোগ করুন</button>
-    </div>
+<div class="header"><a href="index.html" style="color:white;text-decoration:none;font-size:22px">←</a><div><h3>Admin Panel</h3><small>মাওলানা আজম শাহ • গোপন</small></div></div>
+
+<div id="loginBox" class="card" style="margin-top:30px;text-align:center">
+  <h2>🔐 Admin Login</h2>
+  <p style="color:#888;font-size:12px;margin-top:6px">শুধুমাত্র অ্যাডমিনের জন্য</p>
+  <div style="display:flex;gap:8px;margin-top:16px">
+    <input id="pinInput" type="password" placeholder="গোপন PIN দিন" style="margin:0">
+    <button class="btn btn-green" onclick="login()">প্রবেশ</button>
   </div>
-  <div class="card"><h2>📦 পণ্য তালিকা</h2><div id="productList"></div></div>
-  <div class="card"><h2>📋 অর্ডার</h2><div id="orderList"></div><button class="btn" style="margin-top:10px;background:#fee;color:#900" onclick="clearOrders()">অর্ডার মুছুন</button></div>
-  <div style="height:80px"></div>
 </div>
-<div class="bottom-nav">
-  <a href="index.html" class="nav-item"><span>🏠</span>Home</a>
-  <a href="#" class="nav-item"><span>⊞</span>Category</a>
-  <a href="#" class="nav-item"><span>🔍</span>Search</a>
-  <a href="#" class="nav-item"><span>🛒</span>Cart</a>
-  <a href="admin.html" class="nav-item active"><span>👤</span>Admin</a>
+
+<div id="adminBox" class="hidden">
+  <div class="card"><h3>➕ নতুন পণ্য</h3><input id="pName" placeholder="নাম"><input id="pPrice" type="number" placeholder="দাম"><select id="pCat"><option>আয়ুর্বেদিক</option><option>কসমেটিকস</option><option>পোশাক</option></select><button class="btn btn-green" style="width:100%;margin-top:10px" onclick="addProduct()">যোগ করুন</button></div>
+  <div class="card"><h3>📦 পণ্য তালিকা</h3><div id="productList"></div></div>
+  <div class="card"><h3>🛒 অর্ডার</h3><div id="orderList"></div></div>
+  <div class="card" style="text-align:center"><button class="btn" style="background:#eee" onclick="logout()">লগআউট</button></div>
 </div>
+
 <script>
-const PIN='1234';let imgBase64='';
-function login(){
-  if(document.getElementById('pinInput').value===PIN){
-    document.getElementById('loginSection').style.display='none';
-    document.getElementById('mainSection').style.display='block';
-    loadProducts(); loadOrders();
-  }else alert('ভুল PIN');
-}
-function previewFile(){
-  let file=document.getElementById('pImage').files[0];
-  if(!file) return;
-  if(file.size>5*1024*1024){alert('৫MB এর বেশি');return}
-  let r=new FileReader();
-  r.onload=e=>{
-    imgBase64=e.target.result;
-    let img=document.getElementById('previewImg');
-    img.src=imgBase64; img.classList.remove('hidden');
-  };
-  r.readAsDataURL(file);
-}
-function getProducts(){
-  let s=localStorage.getItem('azam_products');
-  if(s) return JSON.parse(s);
-  return [{id:1,name:'খাঁটি মধু',price:1200,cat:'আয়ুর্বেদিক',img:'🍯',imgData:''},{id:2,name:'হারবাল টনিক',price:850,cat:'আয়ুর্বেদিক',img:'🌿',imgData:''}];
-}
+const SECRET_PIN="44557";
+let defaultProducts=[{id:1,name:'খাঁটি মধু',price:1200,cat:'আয়ুর্বেদিক',img:'🍯'}];
+function getProducts(){let s=localStorage.getItem('azam_products');try{return s?JSON.parse(s):defaultProducts}catch(e){return defaultProducts}}
 function saveProducts(p){localStorage.setItem('azam_products',JSON.stringify(p))}
-function addProduct(){
-  let name=document.getElementById('pName').value.trim();
-  let cat=document.getElementById('pCat').value;
-  let price=parseInt(document.getElementById('pPrice').value);
-  let emoji=document.getElementById('pEmoji').value || '🌿';
-  if(!name ||!price){alert('নাম ও দাম দিন');return}
-  let products=getProducts();
-  products.unshift({id:Date.now(),name,cat,price,img:emoji,imgData:imgBase64});
-  saveProducts(products);
-  document.getElementById('pName').value='';document.getElementById('pPrice').value='';document.getElementById('pEmoji').value='';imgBase64='';document.getElementById('previewImg').classList.add('hidden');
-  loadProducts(); alert('পণ্য যোগ হয়েছে! বাইরের দোকানে দেখাবে');
+function login(){
+  let pin=document.getElementById('pinInput').value.trim();
+  if(pin===SECRET_PIN){
+    document.getElementById('loginBox').classList.add('hidden');
+    document.getElementById('adminBox').classList.remove('hidden');
+    localStorage.setItem('azam_admin','1');renderAll();
+  }else{alert('ভুল PIN!');}
 }
-function loadProducts(){
-  let list=document.getElementById('productList');
-  let products=getProducts();
-  list.innerHTML=products.map(p=>`
-    <div class="product-row">
-      <div style="display:flex;align-items:center;gap:8px;flex:1">
-        ${p.imgData?`<img src="${p.imgData}">`:`<div style="width:42px;height:42px;background:#eaf5e1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px">${p.img}</div>`}
-        <div><div style="font-weight:600;font-size:13px">${p.name}</div><div style="font-size:11px;color:#666">${p.cat} • ৳ ${p.price}</div></div>
-      </div>
-      <button onclick="delProd(${p.id})" style="background:#fee;color:#900;border:none;padding:6px 10px;border-radius:8px;cursor:pointer">🗑️</button>
-    </div>
-  `).join('') || '<p style="color:#888;font-size:13px">কোন পণ্য নেই</p>';
-}
-function delProd(id){if(!confirm('মুছবেন?')) return;let products=getProducts().filter(p=>p.id!==id);saveProducts(products);loadProducts();}
-function filterList(){let q=document.getElementById('globalSearch').value.toLowerCase();document.querySelectorAll('.product-row').forEach(row=>{row.style.display=row.innerText.toLowerCase().includes(q)?'flex':'none'});}
-function loadOrders(){let div=document.getElementById('orderList');let orders=JSON.parse(localStorage.getItem('azam_orders')||'[]');if(orders.length===0){div.innerHTML='<p style="color:#888;font-size:13px">এখনো কোন অর্ডার আসেনি</p>';return}div.innerHTML=orders.map(o=>`<div class="order-card"><div style="font-weight:600">${o.date}</div><div>${o.items.map(i=>`${i.name} x${i.qty}`).join(', ')}</div><div style="font-weight:700;color:#0f3d2e">মোট: ৳ ${o.total}</div></div>`).join('');}
-function clearOrders(){if(confirm('সব অর্ডার মুছবেন?')){localStorage.removeItem('azam_orders');loadOrders();}}
+function checkLogin(){if(localStorage.getItem('azam_admin')==='1'){document.getElementById('loginBox').classList.add('hidden');document.getElementById('adminBox').classList.remove('hidden');renderAll();}}
+function logout(){localStorage.removeItem('azam_admin');location.reload();}
+function addProduct(){let n=document.getElementById('pName').value.trim();let pr=parseInt(document.getElementById('pPrice').value);let c=document.getElementById('pCat').value;if(!n||!pr){alert('নাম দাম দিন');return;}let p=getProducts();p.unshift({id:Date.now(),name:n,price:pr,cat:c,img:'🌿'});saveProducts(p);renderAll();alert('যোগ হয়েছে');}
+function deleteProduct(id){let p=getProducts().filter(x=>x.id!==id);saveProducts(p);renderAll();}
+function renderProducts(){let l=document.getElementById('productList');l.innerHTML=getProducts().map(p=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee"><span>${p.name} - ৳${p.price}</span><button class="btn btn-red" onclick="deleteProduct(${p.id})">মুছুন</button></div>`).join('')}
+function renderOrders(){let d=document.getElementById('orderList');let o=JSON.parse(localStorage.getItem('azam_orders')||'[]');d.innerHTML=o.length?o.map(x=>`<div style="border:1px solid #eee;padding:8px;border-radius:8px;margin-bottom:6px"><b>${x.customer?.name||''}</b> ${x.customer?.phone||''}<br>৳${x.total||0}</div>`).join(''):'<p style="color:#888">কোন অর্ডার নেই</p>'}
+function renderAll(){renderProducts();renderOrders();}
+checkLogin();
 </script>
 </body>
 </html>
