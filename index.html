@@ -101,17 +101,20 @@ function render(){
 function addToCart(name){let cart=getCart();cart.push({name,date:Date.now()});saveCart(cart);document.getElementById('cProd').value=name;alert('✅ '+name+' কার্টে যোগ হয়েছে!');document.getElementById('orderSec').scrollIntoView({behavior:'smooth'});}
 function buyWhatsApp(name){document.getElementById('cProd').value=name;document.getElementById('orderSec').scrollIntoView({behavior:'smooth'});}
 function placeOrder(){
-  let name=document.getElementById('cName').value.trim();
-  let phone=document.getElementById('cPhone').value.trim();
-  let address=document.getElementById('cAddress').value.trim();
-  let prod=document.getElementById('cProd').value.trim();
+ 
+  let name=document.getElementById('cName'). ...
+  let phone=document.getElementById('cPhone'...
+  let address=document.getElementById('cAddr...
+  let prod=document.getElementById('cProd'...
   if(!name||!phone||!address){alert('নাম, মোবাইল ও ঠিকানা সব দিন');return;}
   if(!prod){alert('একটি পণ্য নির্বাচন করুন');return;}
-  let msg=`আসসালামু আলাইকুম,%0Aআমি ${name}%0A%0A🛍️ পণ্য: ${prod}%0A📞 মোবাইল: ${phone}%0A🏠 ঠিকানা: ${address}%0A%0Aঅর্ডারটি কনফার্ম করুন।`;
+  let msg=`আসসালামু আলাইকুম,%0Aআমি ${name}%0A%0Aপণ্য: ${prod}%0Aমোবাইল: ${phone}%0Aঠিকানা: ${address}`;
   let url=`https://wa.me/${WA_NUMBER}?text=${msg}`;
-  window.open(url,'_blank');
+  window.location.href=url;
 }
 render();
 </script>
 </body>
-</html>
+</html> 
+
+
