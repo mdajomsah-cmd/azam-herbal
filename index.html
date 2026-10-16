@@ -45,27 +45,23 @@ body{background:#f8fdf4;color:#1a1a1a;padding-bottom:90px}
 <div class="cart-badge">🛒<br><span id="cartCount">0</span></div>
 </div>
 </div>
-
 <div class="catGrid">
 <div class="catCard">🛍️<br>সব</div>
 <div class="catCard">🌿<br>আয়ুর্বেদিক</div>
 <div class="catCard">💄<br>কসমেটিকস</div>
 <div class="catCard">👗<br>পোশাক</div>
 </div>
-
 <div class="product-section">
 <div style="display:flex;justify-content:space-between;padding:8px 2px">
 <h2 style="color:#0f3d2e">জনপ্রিয় পণ্য</h2><span style="color:#0f3d2e;font-size:14px">সব</span>
 </div>
 <div id="productGrid" class="product-grid"></div>
-</div>
-
-<div class="fbBox">
+</div>  
+  <div class="fbBox">
 <h3>🌿 আমাদের Facebook পেজে যুক্ত থাকুন</h3>
 <a class="fbBtn" style="background:#1877F2" href="https://www.facebook.com/share/1Y7AGQaD54/" target="_blank">📘 Facebook Page 1</a>
 <a class="fbBtn" style="background:#0f3d2e" href="https://www.facebook.com/share/18XPzPbG4v/" target="_blank">📘 Facebook Page 2</a>
 </div>
-
 <div class="orderCard" id="orderSec">
 <h2 style="color:#0f3d2e;text-align:center">📝 অর্ডার করুন</h2>
 <p style="text-align:center;color:#666;font-size:13px">ফর্ম পূরণ করুন, সরাসরি WhatsApp এ যাবে</p>
@@ -75,11 +71,9 @@ body{background:#f8fdf4;color:#1a1a1a;padding-bottom:90px}
 <input id="cProd" class="inp" placeholder="পণ্যের নাম" readonly style="background:#f0f4e8;font-weight:700">
 <button class="orderBtn" onclick="placeOrder()">✅ WhatsApp এ অর্ডার করুন</button>
 </div>
-
 <div class="bottomNav">
 <div>🏠<br>হোম</div><div>⊞<br>ক্যাটাগরি</div><div>🔍<br>পণ্য</div><div>🛒<br>কার্ট</div><div onclick="location.href='admin.html'">👤<br>Admin</div>
 </div>
-
 <script>
 const WA_NUMBER="8801603104191";
 let defaultProducts=[{id:1,name:"খাঁটি মধু",price:1200,cat:"আয়ুর্বেদিক",img:"🍯",isImage:false},{id:2,name:"হারবাল টনিক",price:850,cat:"আয়ুর্বেদিক",img:"🌿",isImage:false}];
@@ -101,11 +95,10 @@ function render(){
 function addToCart(name){let cart=getCart();cart.push({name,date:Date.now()});saveCart(cart);document.getElementById('cProd').value=name;alert('✅ '+name+' কার্টে যোগ হয়েছে!');document.getElementById('orderSec').scrollIntoView({behavior:'smooth'});}
 function buyWhatsApp(name){document.getElementById('cProd').value=name;document.getElementById('orderSec').scrollIntoView({behavior:'smooth'});}
 function placeOrder(){
- 
-  let name=document.getElementById('cName'). ...
-  let phone=document.getElementById('cPhone'...
-  let address=document.getElementById('cAddr...
-  let prod=document.getElementById('cProd'...
+  let name=document.getElementById('cName').value.trim();
+  let phone=document.getElementById('cPhone').value.trim();
+  let address=document.getElementById('cAddress').value.trim();
+  let prod=document.getElementById('cProd').value.trim();
   if(!name||!phone||!address){alert('নাম, মোবাইল ও ঠিকানা সব দিন');return;}
   if(!prod){alert('একটি পণ্য নির্বাচন করুন');return;}
   let msg=`আসসালামু আলাইকুম,%0Aআমি ${name}%0A%0Aপণ্য: ${prod}%0Aমোবাইল: ${phone}%0Aঠিকানা: ${address}`;
@@ -115,6 +108,4 @@ function placeOrder(){
 render();
 </script>
 </body>
-</html> 
-
-
+</html>
