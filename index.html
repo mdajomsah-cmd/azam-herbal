@@ -95,17 +95,12 @@ function render(){
 function addToCart(name){let cart=getCart();cart.push({name,date:Date.now()});saveCart(cart);document.getElementById('cProd').value=name;alert('✅ '+name+' কার্টে যোগ হয়েছে!');document.getElementById('orderSec').scrollIntoView({behavior:'smooth'});}
 function buyWhatsApp(name){document.getElementById('cProd').value=name;document.getElementById('orderSec').scrollIntoView({behavior:'smooth'});}
 function placeOrder(){
-  let name=document.getElementById('cName').value.trim();
-  let phone=document.getElementById('cPhone').value.trim();
-  let address=document.getElementById('cAddress').value.trim();
-  let prod=document.getElementById('cProd').value.trim();
-  if(!name||!phone||!address){alert('নাম, মোবাইল ও ঠিকানা সব দিন');return;}
-  if(!prod){alert('একটি পণ্য নির্বাচন করুন');return;}
-  let msg=`আসসালামু আলাইকুম,%0Aআমি ${name}%0A%0Aপণ্য: ${prod}%0Aমোবাইল: ${phone}%0Aঠিকানা: ${address}`;
-  let url=`https://wa.me/${WA_NUMBER}?text=${msg}`;
-  window.location.href=url;
+
+  window.open('https://docs.google.com/forms/d/1zvK5XqWDhzM1P25uOeGHcko2qyohqkMK0t_mB_zD2Lc/viewform','_blank');
 }
+  
+
 render();
-</script>
+</script
 </body>
 </html> 
